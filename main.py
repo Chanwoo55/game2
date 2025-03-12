@@ -53,7 +53,7 @@ def get_enemy_sprite(frame_index):
 def get_player_sprite(frame_index):
     """Возвращает кадр спрайта игрока из спрайт-листа."""
     sprite_width = 24
-    sprite_height = 24  
+    sprite_height = 22 
     x = (frame_index % num_player_frames) * sprite_width
     y = 0 
     player_sprite = player_sprite_sheet.subsurface((x, y, sprite_width, sprite_height))
