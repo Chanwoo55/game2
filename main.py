@@ -99,9 +99,16 @@ def get_bird_sprite(frame_index):
 
 
 def reset_game():
-    global game_over, enemies, score, last_enemy_spawn, time_since_last_score
+    global game_over, enemies, score, last_enemy_spawn, time_since_last_score, birds
     game_over = False
     enemies = []
+    birds = []
+    for i in range(num_birds):
+        bird_x = width + random.randint(100, 300)
+        is_active = False if i > 0 else True
+        birds.append({"x": bird_x, "y": bird_y_level, "frame": 0, "is_active": is_active})
+
+
     score = 0
     last_enemy_spawn = pygame.time.get_ticks()
     time_since_last_score = 0
@@ -260,6 +267,5 @@ while True:
     else:
         score_text = font.render("Счет: " + str(score), True, WHITE)
         screen.blit(score_text, (10, 10))
-
     pygame.display.flip()
     clock.tick(fps)
